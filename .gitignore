@@ -1,0 +1,14 @@
+# Standard web app gitignore
+node_modules/
+.DS_Store
+Thumbs.db
+.gemini/
+.agents/
+C:/Users/Administrator/.gemini/antigravity/brain/
+C:/Users/Administrator/.gemini/antigravity/mcp/
+C:/Users/Administrator/.gemini/config/
+*.log
+.git/
+# Ignore any IDE temp files
+.vscode/
+.idea/

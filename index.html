@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ERPNext Learning Journey Portal</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- App Container -->
+  <div class="app-layout">
+    
+    <!-- Top Navigation Bar -->
+    <header class="navbar">
+      <div class="nav-brand">
+        <span class="logo-icon">⚙️</span>
+        <h1>ERPNext Journey</h1>
+      </div>
+      
+      <!-- Search Input -->
+      <div class="search-container">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="search-input" placeholder="Search concepts (Press '/' to search)..." autocomplete="off">
+        <kbd class="shortcut">/</kbd>
+      </div>
+      
+      <!-- Theme Switcher -->
+      <div class="nav-actions">
+        <button id="theme-toggle" class="theme-btn" title="Toggle Theme">
+          <span class="icon-sun">☀️</span>
+          <span class="icon-moon">🌙</span>
+        </button>
+      </div>
+      
+      <!-- Mobile Sidebar Toggle -->
+      <button id="mobile-toggle" class="mobile-toggle-btn">
+        <span class="hamburger"></span>
+      </button>
+    </header>
+
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar" id="sidebar">
+      <nav class="sidebar-nav" id="sidebar-nav">
+        <!-- Sidebar links will be dynamically populated from docsData by app.js -->
+      </nav>
+    </aside>
+
+    <!-- Main Content Container -->
+    <main class="content-wrapper" id="content-wrapper">
+      <article class="content-body" id="content-body">
+        <!-- Content will be dynamically rendered here based on active page -->
+      </article>
+      
+      <!-- Footer -->
+      <footer class="content-footer">
+        <p>ERPNext Learning Journey Portal &copy; 2026. Made with ❤️ for learning.</p>
+        <p class="small">Press <kbd>Ctrl</kbd> + <kbd>K</kbd> to search anywhere.</p>
+      </footer>
+    </main>
+  </div>
+
+  <!-- Documentation Content Script -->
+  <script src="docs-content.js"></script>
+  <!-- Application Logic Script -->
+  <script src="app.js"></script>
+</body>
+</html>
