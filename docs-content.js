@@ -390,6 +390,30 @@ const docsData = {
         <!-- Day 4 Simulator will load here -->
       </div>
     `
+  },
+  quiz: {
+    title: "Day 1-3 Quiz & Flashcards Hub",
+    category: "Interactive Practice",
+    icon: "🎯",
+    content: `
+      <h2>🎯 ERPNext Mastery: Day 1 to Day 3 Quiz & Flashcard Hub</h2>
+      <p>Reinforce your understanding of Buying (P2P), Sales (O2C), and Stock Entries & Dimensions with 30 interactive flashcards and 45 detailed scenario-based MCQs!</p>
+
+      <div class="callout note" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+        <div>
+          <h3 style="margin: 0;">🚀 Ready for Fullscreen Study & Test Mode?</h3>
+          <p style="margin: 0.5rem 0 0 0;">Open the dedicated standalone Quiz & Flashcard single-page app in a new tab or use the embedded view below!</p>
+        </div>
+        <a href="quizNow.html" target="_blank" class="btn btn-primary" style="background: linear-gradient(90deg, #6366f1, #a855f7); color: white; padding: 0.75rem 1.5rem; border-radius: 10px; font-weight: 700; text-decoration: none; box-shadow: 0 4px 12px rgba(99,102,241,0.4);">
+          ⚡ Open quizNow.html Fullscreen
+        </a>
+      </div>
+
+      <div style="width: 100%; height: 780px; border: 1px solid var(--border-color); border-radius: 16px; overflow: hidden; margin-top: 1.5rem; box-shadow: var(--shadow-lg);">
+        <iframe src="quizNow.html" style="width: 100%; height: 100%; border: none;" title="ERPNext Quiz & Flashcards Hub"></iframe>
+      </div>
+    `
   }
 };
+
 
