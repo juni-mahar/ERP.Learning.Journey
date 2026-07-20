@@ -79,6 +79,8 @@ document.addEventListener("DOMContentLoaded", () => {
         initDay2Simulator();
       } else if (hash === "day3") {
         initDay3Simulator();
+      } else if (hash === "day4") {
+        initDay4Simulator();
       }
       
       // Update page title in browser
@@ -1181,6 +1183,194 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("sim3-tab-content").innerHTML = renderSim3TabContent();
         tabStock.classList.add("active");
         tabGl.classList.remove("active");
+      });
+    }
+  }
+
+  // ==========================================
+  // DAY 4 SIMULATOR (CRM - PRE-SALES)
+  // ==========================================
+  let sim4State = null;
+
+  function resetSim4State() {
+    sim4State = {
+      step: 0,
+      leadName: "",
+      opportunityVal: 0,
+      quotationVal: 0,
+      dealWon: false,
+      history: [
+        { time: new Date().toLocaleTimeString(), action: "Pipeline Init", details: "Ready to capture new inquiries into the CRM Pipeline.", status: "success" }
+      ]
+    };
+  }
+
+  function initDay4Simulator() {
+    const container = document.getElementById("day4-simulator-container");
+    if (!container) return;
+    if (!sim4State) resetSim4State();
+    renderDay4Simulator();
+  }
+
+  function renderDay4Simulator() {
+    const container = document.getElementById("day4-simulator-container");
+    if (!container) return;
+
+    container.innerHTML = `
+      <div class="simulator-layout">
+        <!-- Controls Panel -->
+        <div class="sim-panel">
+          <div class="sim-panel-title">
+            <span>🤝 CRM Pipeline Controls</span>
+            <button class="btn-secondary" id="btn-reset-sim4">Reset</button>
+          </div>
+          
+          <div class="form-group">
+            <label>Pipeline Stage:</label>
+            <div style="font-weight: 600; color: var(--accent-color); margin-bottom: 1rem; font-size: 0.9rem;" id="sim4-status-text">
+              ${getCurrentCRMStatusText()}
+            </div>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+            <button class="btn-primary" id="btn-crm-lead" ${sim4State.step !== 0 ? 'disabled style="opacity: 0.5;"' : ''}>
+              1. Capture New Lead (Inquiry)
+            </button>
+            <button class="btn-primary" id="btn-crm-opp" ${sim4State.step !== 1 ? 'disabled style="opacity: 0.5;"' : ''}>
+              2. Qualify to Opportunity (Deals)
+            </button>
+            <button class="btn-primary" id="btn-crm-quote" ${sim4State.step !== 2 ? 'disabled style="opacity: 0.5;"' : ''}>
+              3. Issue Formal Quotation
+            </button>
+            <button class="btn-primary" id="btn-crm-so" ${sim4State.step !== 3 ? 'disabled style="opacity: 0.5;"' : ''}>
+              4. Win Deal & Convert to Sales Order 🤝
+            </button>
+          </div>
+        </div>
+
+        <!-- Output Panel -->
+        <div>
+          <!-- Summary Cards -->
+          <div class="sim-panel">
+            <div class="sim-panel-title">📈 CRM Deal Summary</div>
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.75rem; font-size: 0.85rem; margin-bottom: 1rem;">
+              <div><strong>Lead Name:</strong> ${sim4State.leadName || 'None'}</div>
+              <div><strong>Pipeline Probability:</strong> ${getProbabilityText()}</div>
+              <div><strong>Est. Opportunity Value:</strong> Rs ${sim4State.opportunityVal.toLocaleString()}</div>
+              <div><strong>Quotation Offer:</strong> Rs ${sim4State.quotationVal.toLocaleString()}</div>
+              <div style="grid-column: span 2;"><strong>Deal Status:</strong> ${sim4State.dealWon ? '<span style="color:var(--success-color); font-weight:bold;">WON (Handed off to Day 2 Sales Order)</span>' : '<span style="color:var(--warning-color);">In Progress</span>'}</div>
+            </div>
+          </div>
+
+          <!-- Activity Log -->
+          <div class="sim-panel">
+            <div class="sim-panel-title">📜 Pipeline Activity Log</div>
+            <div class="log-list">
+              ${renderSim4Logs()}
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+
+    bindDay4Events();
+  }
+
+  function getProbabilityText() {
+    switch(sim4State.step) {
+      case 0: return "0%";
+      case 1: return "20% (Lead Contacted)";
+      case 2: return "70% (Opportunity Qualified)";
+      case 3: return "90% (Quotation Sent)";
+      case 4: return "100% (Deal Won!)";
+      default: return "0%";
+    }
+  }
+
+  function getCurrentCRMStatusText() {
+    switch(sim4State.step) {
+      case 0: return "Stage 0: Awaiting new inquiry (Lead).";
+      case 1: return "Stage 1: Lead captured (Ali Traders). Ready to qualify deal.";
+      case 2: return "Stage 2: Opportunity qualified (70% probability). Ready to send quote.";
+      case 3: return "Stage 3: Quotation sent (10 Laptops @ Rs 60,000 each = Rs 600,000). Awaiting decision.";
+      case 4: return "Stage 4: Deal WON! Customer accepted quote. Auto-created Sales Order.";
+      default: return "Ready.";
+    }
+  }
+
+  function renderSim4Logs() {
+    let list = "";
+    for (let i = sim4State.history.length - 1; i >= 0; i--) {
+      const item = sim4State.history[i];
+      list += `
+        <div class="log-item ${item.status}">
+          <div>[${item.time}] <strong>${item.action}</strong></div>
+          <div>${item.details}</div>
+        </div>
+      `;
+    }
+    return list;
+  }
+
+  function bindDay4Events() {
+    const timeStr = () => new Date().toLocaleTimeString();
+
+    const handleAction = (btnId, stepNum, actionName, updatesFn) => {
+      const btn = document.getElementById(btnId);
+      if (btn) {
+        btn.addEventListener("click", () => {
+          sim4State.step = stepNum;
+          updatesFn();
+          renderDay4Simulator();
+        });
+      }
+    };
+
+    handleAction("btn-crm-lead", 1, "Lead Captured", () => {
+      sim4State.leadName = "Ali Traders (Office Expansion)";
+      sim4State.history.push({
+        time: timeStr(),
+        action: "New Lead #LEAD-001",
+        details: "Captured inquiry from 'Ali Traders'. Requirement: 10 Laptops for new office.",
+        status: "success"
+      });
+    });
+
+    handleAction("btn-crm-opp", 2, "Opportunity Qualified", () => {
+      sim4State.opportunityVal = 600000;
+      sim4State.history.push({
+        time: timeStr(),
+        action: "Opportunity #OPP-001",
+        details: "Qualified lead as high probability (70%). Estimated deal value: Rs 600,000.",
+        status: "success"
+      });
+    });
+
+    handleAction("btn-crm-quote", 3, "Quotation Sent", () => {
+      sim4State.quotationVal = 600000;
+      sim4State.history.push({
+        time: timeStr(),
+        action: "Customer Quotation #QTN-001",
+        details: "Issued official offer: 10 Laptops @ Rs 60,000 each = Rs 600,000 (Valid for 7 days).",
+        status: "success"
+      });
+    });
+
+    handleAction("btn-crm-so", 4, "Deal Won", () => {
+      sim4State.dealWon = true;
+      sim4State.history.push({
+        time: timeStr(),
+        action: "Deal WON! 🤝",
+        details: "Ali Traders accepted the Quotation! System auto-created Sales Order #SO-001 (Ready for Day 2 O2C Cycle).",
+        status: "success"
+      });
+    });
+
+    const resetBtn = document.getElementById("btn-reset-sim4");
+    if (resetBtn) {
+      resetBtn.addEventListener("click", () => {
+        resetSim4State();
+        renderDay4Simulator();
       });
     }
   }

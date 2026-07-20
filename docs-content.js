@@ -331,5 +331,65 @@ const docsData = {
         <!-- Day 3 Simulator will load here -->
       </div>
     `
+  },
+  day4: {
+    title: "Day 4: CRM (Customer Relationship Management)",
+    category: "Learning Days",
+    icon: "🤝",
+    content: `
+      <h2>Day 4: Customer Relationship Management (CRM)</h2>
+      <p>CRM is the pre-sales cycle in ERPNext. It manages potential customer interactions, converts cold leads into qualified opportunities, and issues formal price Quotations before handing off to the Sales Order cycle.</p>
+
+      <div class="callout note">
+        <h3>💡 Simple Analogy: Customer Ki Inquiry Se Deal Final hone tak 🤝</h3>
+        <p>Sochiye ek banda aapki shop par phone karta hai aur puchta hai: <em>"Mujhe apni office ke liye 10 Laptops chahiye, kya rate denge?"</em> Pehle wo sirf ek <strong>Lead</strong> hai. Phir baat aage barhti hai toh wo <strong>Opportunity</strong> banti hai. Jab hum unhe official rate-card bhejte hain toh wo <strong>Quotation</strong> hota hai. Jab wo offer accept kar le, toh deal **Win** ho jati hai aur wo Sales Order (Day 2) ban jati hai!</p>
+      </div>
+
+      <h3>The Pre-Sales Pipeline (CRM Flow)</h3>
+      
+      <div class="workflow-container">
+        
+        <!-- Step 1: Lead -->
+        <div class="workflow-step">
+          <span class="badge request">1. Lead (Inquiry)</span>
+          <p><strong>Urdu Analogy:</strong> Ek naya banda jiska contact number aur requirement aap note kar lete hain takay sales team follow-up kar sake.</p>
+          <p><strong>Professional Concept:</strong> Any individual or organization interested in your products. Contains contact details, lead source (Website, Phone, Campaign), and status (Open, Contacted, Converted).</p>
+          <p class="description" style="font-style: italic; color: var(--text-muted);">No accounting or stock impact.</p>
+        </div>
+
+        <!-- Step 2: Opportunity -->
+        <div class="workflow-step">
+          <span class="badge po">2. Opportunity (Qualified Prospect)</span>
+          <p><strong>Urdu Analogy:</strong> Salesperson customer se baat karke confirm karta hai ke ye serious buyer hai. Probability set hoti hai (e.g. 70% chance) aur total deal value estimate hoti hai (Rs 600,000).</p>
+          <p><strong>Professional Concept:</strong> A qualified lead showing genuine buying intent. Tracks estimated opportunity amount, closing date, and probability percentage.</p>
+          <p class="description" style="font-style: italic; color: var(--text-muted);">No accounting or stock impact. Used for Sales Forecasting reports.</p>
+        </div>
+
+        <!-- Step 3: Quotation -->
+        <div class="workflow-step highlight">
+          <span class="badge quotation">3. Quotation (Formal Offer Letter)</span>
+          <p><strong>Urdu Analogy:</strong> Customer ko official formal proposal PDF bhejna: <em>"10 Laptops @ Rs 60,000 each = Total Rs 600,000 (Validity: 7 Days)."</em></p>
+          <p><strong>Professional Concept:</strong> A formal price commitment sent to the customer specifying items, rates, taxes, payment terms, and validity period.</p>
+          <p class="description" style="font-style: italic; color: var(--text-muted);">No GL entry or stock change. Legal offer valid until expiry date.</p>
+        </div>
+
+        <!-- Step 4: Convert to Sales Order -->
+        <div class="workflow-step highlight">
+          <span class="badge payment">4. Convert to Sales Order (Deal Won! 🤝)</span>
+          <p><strong>Urdu Analogy:</strong> Customer offer accept kar leta hai aur keh deta hai: <em>"Done! Order final hai."</em> System auto-convert kar ke ise Sales Order (Day 2) bana deta hai.</p>
+          <p><strong>Professional Concept:</strong> Clicking "Create Sales Order" converts the Quotation into a confirmed binding sales contract, locking in inventory and starting the Order-to-Cash cycle.</p>
+        </div>
+
+      </div>
+
+      <!-- Embedded Day 4 Simulator Section -->
+      <h3>🎮 Day 4 Interactive Playground: CRM Pipeline Simulator</h3>
+      <p>Test the pre-sales pipeline! Create a Lead, nurture them into an Opportunity, generate an official Quotation, and win the deal to auto-trigger the Sales Order!</p>
+      
+      <div id="day4-simulator-container">
+        <!-- Day 4 Simulator will load here -->
+      </div>
+    `
   }
 };
+
