@@ -613,3 +613,303 @@ body {
     align-items: flex-start;
   }
 }
+
+/* Search Highlights & Live Results styling */
+.search-highlight {
+  background-color: var(--accent-glow);
+  color: var(--text-primary);
+  border-radius: 4px;
+  padding: 0 4px;
+  font-weight: 600;
+  box-shadow: 0 0 8px var(--accent-glow);
+}
+
+.search-result-item {
+  transition: all var(--transition-fast);
+}
+
+.search-result-item:hover {
+  border-color: var(--accent-color);
+  transform: translateY(-2px);
+}
+
+/* ==========================================
+   INTERACTIVE STOCK SIMULATOR STYLES
+   ========================================== */
+
+.simulator-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 2rem;
+  margin-top: 1.5rem;
+}
+
+@media (max-width: 900px) {
+  .simulator-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+.sim-panel {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: var(--card-shadow);
+  backdrop-filter: var(--glass-blur);
+  margin-bottom: 1.5rem;
+}
+
+.sim-panel-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 1.25rem;
+  color: var(--text-primary);
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.form-group {
+  margin-bottom: 1.25rem;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+}
+
+.form-control {
+  width: 100%;
+  padding: 0.65rem 0.75rem;
+  background-color: rgba(9, 13, 22, 0.4);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  transition: all var(--transition-fast);
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 3px var(--accent-glow);
+}
+
+.btn-primary {
+  width: 100%;
+  padding: 0.75rem;
+  background: linear-gradient(135deg, var(--accent-color), #4f46e5);
+  border: none;
+  border-radius: 8px;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-primary:hover {
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px var(--accent-glow);
+}
+
+.btn-secondary {
+  padding: 0.35rem 0.75rem;
+  background: transparent;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.btn-secondary:hover {
+  background: var(--bg-sidebar);
+  color: var(--text-primary);
+}
+
+/* Warehouse grid visualizer */
+.warehouse-visual-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+@media (max-width: 500px) {
+  .warehouse-visual-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.warehouse-card {
+  background: rgba(15, 23, 42, 0.4);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1rem;
+  text-align: center;
+  position: relative;
+  transition: all var(--transition-normal);
+}
+
+.warehouse-card.active-transfer-source {
+  border-color: var(--error-color);
+  box-shadow: 0 0 10px rgba(239, 68, 68, 0.15);
+}
+
+.warehouse-card.active-transfer-target {
+  border-color: var(--success-color);
+  box-shadow: 0 0 10px rgba(16, 185, 129, 0.15);
+}
+
+.warehouse-card h5 {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+}
+
+.warehouse-card .qty-badge {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.25rem;
+}
+
+.warehouse-card .val-label {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.dimension-exp-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.dimension-exp-card {
+  background: rgba(99, 102, 241, 0.03);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 0.75rem;
+  text-align: center;
+}
+
+.dimension-exp-card h5 {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  margin-bottom: 0.25rem;
+}
+
+.dimension-exp-card .val {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--accent-color);
+}
+
+/* Ledger tabs & layout */
+.ledger-tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0.5rem;
+}
+
+.ledger-tab-btn {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0.3rem 0.6rem;
+  border-bottom: 2px solid transparent;
+  transition: all var(--transition-fast);
+}
+
+.ledger-tab-btn.active {
+  color: var(--accent-color);
+  border-bottom-color: var(--accent-color);
+}
+
+.log-list {
+  max-height: 220px;
+  overflow-y: auto;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.log-item {
+  padding: 0.4rem 0.6rem;
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+  border-left: 3px solid var(--text-muted);
+}
+
+.log-item.success { border-left-color: var(--success-color); }
+.log-item.error { border-left-color: var(--error-color); }
+.log-item.warning { border-left-color: var(--warning-color); }
+
+.gl-table-container {
+  overflow-x: auto;
+}
+
+.gl-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+}
+
+.gl-table th, .gl-table td {
+  padding: 0.5rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.gl-table th {
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.gl-table tr.dr td:first-child {
+  color: var(--success-color);
+  padding-left: 0.5rem;
+}
+
+.gl-table tr.cr td:first-child {
+  padding-left: 1.5rem;
+  color: var(--text-primary);
+}
+
+.gl-table tr.dr td:nth-child(2), .gl-table tr.cr td:nth-child(3) {
+  font-weight: 600;
+}
+
+/* Flash animation */
+@keyframes flashGreen {
+  0% { background-color: rgba(16, 185, 129, 0.25); }
+  100% { background-color: transparent; }
+}
+
+.flash-green {
+  animation: flashGreen 0.8s ease-out;
+}
