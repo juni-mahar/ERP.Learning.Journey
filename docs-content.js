@@ -409,7 +409,7 @@ const docsData = {
         </a>
       </div>
 
-      <div style="width: 100%; height: 780px; border: 1px solid var(--border-color); border-radius: 16px; overflow: hidden; margin-top: 1.5rem; box-shadow: var(--shadow-lg);">
+      <div style="width: 100%; max-width: 100%; height: 780px; max-height: 85vh; border: 1px solid var(--border-color); border-radius: 16px; overflow: hidden; margin-top: 1.5rem; box-shadow: var(--shadow-lg);">
         <iframe src="quizNow.html" style="width: 100%; height: 100%; border: none;" title="ERPNext Quiz & Flashcards Hub"></iframe>
       </div>
     `
